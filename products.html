@@ -52,8 +52,9 @@
               <td class="text-center">{{ product.origin_price }}</td>
               <td class="text-center">{{ product.price }}</td>
               <td>
-                <span v-if="product.is_enabled" class="text-success text-end">啟用</span>
-                <span v-else class="text-end">未啟用</span>
+                <span class="text-end" :class="{'text-success': product.is_enabled}">
+                  {{ product.is_enabled ? '啟用' : '未啟用'}}
+                </span>
               </td>
               <td>
                 <div class="btn-group">
@@ -152,13 +153,13 @@
                     <div class="mb-3 col-md-6">
                       <label for="origin_price" class="form-label">原價</label>
                       <input id="origin_price" type="number" min="0" class="form-control" placeholder="請輸入原價"
-                              v-model="selectProduct.origin_price">
+                              v-model.number="selectProduct.origin_price">
                     </div>
                     <div class="mb-3 col-md-6">
                       <label for="price" class="form-label">售價</label>
                       <input id="price" type="number" min="0" class="form-control"
                       placeholder="請輸入售價"
-                              v-model="selectProduct.price">
+                              v-model.number="selectProduct.price">
                     </div>
                   </div>
                   <hr>
